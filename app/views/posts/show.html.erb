@@ -11,6 +11,19 @@
     <p class="caption">
       <%= @post.description %>
     </p>
+    <div class="comments" id="comments_<%= @post.id %>">
+      <% if @post.postcomments %>
+      <div class="comment">
+        <%= render @post.postcomments, post: @post %>
+      </div>
+      <% end %>
+    </div>
+    <div class="comment-form col-sm-11">
+        <%= form_for([@post.user,@post, @post.postcomments.build], remote: true) do |f| %>
+
+          <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{@post.id}"%>
+        <% end %>
+      </div> 
     <div class="text-center">
       <%= link_to "Back", root_path %>
     </div>

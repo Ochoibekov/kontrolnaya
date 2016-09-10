@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'postcomments/create'
+
+  get 'postcomments/destroy'
+
   devise_for :users,:path=>'accounts'
   root 'posts#index'
   resources :users do
     get 'my_profile' => 'posts#my_profile', as: 'my_profile'
-    resources :posts
+    resources :posts do
+      resources :postcomments
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
