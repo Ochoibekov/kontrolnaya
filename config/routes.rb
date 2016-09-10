@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users,:path=>'accounts'
   root 'posts#index'
   resources :users do
     get 'my_profile' => 'posts#my_profile', as: 'my_profile'

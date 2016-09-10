@@ -1,0 +1,32 @@
+ 
+<% @posts.each do |post| %>
+  <div class="post">
+      <div class="post-head">
+        <div class="name">
+          <h6><%= post.user.name %> <br></h6>
+          <%if @user == current_user%>
+          <%= link_to 'Edit profile', edit_user_registration_path(current_user) %>
+           <%end %> 
+        </div>
+      </div>
+      <div class="image center-block">
+      <%= image_tag post.image.url(:medium), class:'img-responsive' %> 
+      </div>
+      <p class="caption">
+        <%= post.description %><br> 
+      </p>
+      <p>
+        <%if @user == current_user%>
+              <%= link_to 'Edit',edit_user_post_path(post.user,post) %>
+              <%= link_to 'Delete',user_post_path(post.user,post),
+                      method: :delete,
+                      data: {confirm: 'Do you want to remove this product?'} %>
+        <%end %> 
+      </p>
+    </div>
+  <% end %>
+
+
+
+
+

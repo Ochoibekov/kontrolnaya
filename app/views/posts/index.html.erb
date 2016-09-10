@@ -1,1 +1,19 @@
-index
+<%= will_paginate @posts %>
+<div class="posts-wrapper row">
+  <% @posts.each do |post| %>
+  <div class="post">
+    <div class="time-ago text-center">      
+      <%= time_ago_in_words post.created_at %>
+    </div>
+    <div class="image center-block">
+      <%= link_to (image_tag post.image.url(:thumb)), user_post_path(post.user,post)%>
+    </div>
+    <p class="caption">
+      <%= post.description %><br>	
+    </p>
+    <p>
+     by: <%= link_to post.user.name,user_path(post.user) %>
+    </p>
+  </div>
+  <% end %>
+</div>

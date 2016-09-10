@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!, except: [:index]
+	
   	def index
     	@posts = Post.paginate(:page => params[:page], :per_page => 10).order('id DESC') 
   	end
@@ -11,6 +12,7 @@ class PostsController < ApplicationController
   	def my_profile
     
 	    @user=User.find(params[:user_id])
+	    #@posts=@user.posts.all
 	    @posts = @user.posts.paginate(:page => params[:page], :per_page => 10).order('id DESC')
 	    @post=Post.new
     
@@ -51,6 +53,6 @@ def post_params
 	params.require(:post).permit(:image, :description, :user_id)
 end
 def set_post  
-		@post = Post.find(params[:post_id])
+	@post = Post.find(params[:post_id])
 end
 end

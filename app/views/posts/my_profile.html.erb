@@ -1,1 +1,31 @@
-<%= link_to 'Create new photo', new_user_post_path(current_user)%>
+<%= @user.name  %>s profile <br>
+My photos : <%= link_to 'Create new photo', new_user_post_path(current_user)%>
+<%= will_paginate @posts %>
+<div class="posts-wrapper row">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="image center-block">
+        <%= image_tag post.image.url(:medium), class:'img-responsive' %>  
+      </div>
+      <p class="caption">
+        <%= post.description %><br> 
+      </p>
+
+      <p>
+        <%if current_user == @user%>
+          <%= link_to 'Edit',edit_user_post_path(post.user,post) %>
+          <%= link_to 'Delete', user_post_path(post.user,post),
+            method: :delete,
+            data: {confirm: 'Do you want to remove this product?'} %>
+        <%end %> 
+      </p>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+    
+
