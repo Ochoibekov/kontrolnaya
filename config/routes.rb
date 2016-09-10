@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'posts#index'
+  resources :users do
+    get 'my_profile' => 'posts#my_profile', as: 'my_profile'
+    resources :posts
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
