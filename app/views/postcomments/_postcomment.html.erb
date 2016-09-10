@@ -1,18 +1,27 @@
+<div class="comment-content">
 
-          <%if user_signed_in? %>
-            <div class="user-name">
-              <%= link_to postcomment.user.name, user_path(postcomment.user) %>
-            </div>
-            <%end %>
-            <div class="comment-content">
-              <%= postcomment.content %>
-              <div class="text-right">
-                  <% if current_user== postcomment.user || post.user==current_user %>
-                    <%= link_to user_post_postcomment_path(post.user,post, postcomment), method: :delete, data: { confirm: "Are you sure?" } ,remote: true do %>
-                      <span class="glyphicon glyphicon-remove delete-comment"></span>
-                    <% end %>
-                  <% end %>
-              </div>    
-            </div>
+   <%# avg=0 %>
+   <%#=  postcomments.score.each do |v|%>
+   <%# avg+=v %>
+   <%#end %>
+   <%#= avg/@postcomments.score.size %>
+
+</div>
+<%if user_signed_in? %>
+  <div class="user-name">
+    <%= link_to postcomment.user.name, user_path(postcomment.user) %>
+  </div>
+<%end %>
+<div class="comment-content">
+  <%= postcomment.content %>
+  <%= postcomment.score %>
+  <div class="text-right">
+      <% if current_user== postcomment.user || post.user==current_user %>
+        <%= link_to user_post_postcomment_path(post.user,post, postcomment), method: :delete, data: { confirm: "Are you sure?" } ,remote: true do %>
+          <span class="glyphicon glyphicon-remove delete-comment"></span>
+        <% end %>
+      <% end %>
+  </div>    
+</div>
           
        

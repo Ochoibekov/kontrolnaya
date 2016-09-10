@@ -50,7 +50,7 @@ private
 
 
 def post_params
-	params.require(:post).permit(:image, :description, :user_id)
+	params.require(:post).permit(:image, :description, :user_id,:postcomment_id)
 end
 def set_post  
 	@post = Post.find(params[:post_id])
