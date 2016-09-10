@@ -1,18 +1,11 @@
-<div class="comment-content">
 
-   <%# avg=0 %>
-   <%#=  postcomments.score.each do |v|%>
-   <%# avg+=v %>
-   <%#end %>
-   <%#= avg/@postcomments.score.size %>
-
-</div>
 <%if user_signed_in? %>
   <div class="user-name">
     <%= link_to postcomment.user.name, user_path(postcomment.user) %>
   </div>
 <%end %>
 <div class="comment-content">
+
   <%= postcomment.content %>
   <%= postcomment.score %>
   <div class="text-right">

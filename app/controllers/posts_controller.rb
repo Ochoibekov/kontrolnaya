@@ -9,6 +9,9 @@ class PostsController < ApplicationController
   		@post = Post.find(params[:id])
   	end 
   	
+
+ 
+
   	def my_profile
     
 	    @user=User.find(params[:user_id])

@@ -11,10 +11,13 @@
     <p class="caption">
       <%= @post.description %>
     </p>
+    
     <div class="comments" id="comments_<%= @post.id %>">
       <% if @post.postcomments %>
+         
       <div class="comment">
-        <%= render @post.postcomments, post: @post %>
+      <%= render 'posts/part' %>
+        <%= render @post.postcomments.last(3), post: @post %>
       </div>
       <% end %>
     </div>

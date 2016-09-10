@@ -1,9 +1,7 @@
 class PostcommentsController < ApplicationController
   	before_action :set_post
 
-def index
-	@postcomments =Postcomments.all	
-end
+
 def create
   @postcomment = @post.postcomments.build(postcomment_params)
   @postcomment.user_id = current_user.id

@@ -1,0 +1,9 @@
+<div class="comment-content">
+   <% avg=0 %>
+   <% @post.postcomments.each do |rating|%>
+
+   <% avg+=rating.score %>
+   <%end %>
+   <%average = avg/@post.postcomments.size.to_f %>
+   Average rating is: <%= average.round(2) %>
+</div>
