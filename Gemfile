@@ -18,6 +18,7 @@ gem "paperclip", "~> 5.0.0"
 gem "bootstrap-sass"
 gem 'will_paginate', '~> 3.1.0'
 gem 'activeadmin', '~> 1.0.0.pre4'
+gem 'faker'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
